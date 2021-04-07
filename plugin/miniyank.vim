@@ -46,3 +46,5 @@ noremap <silent> <Plug>(miniyank-cycleback) :<c-u>call miniyank#cycle(-1)<cr>
 noremap <silent> <Plug>(miniyank-tochar) :<c-u>call miniyank#force_motion('v')<cr>
 noremap <silent> <Plug>(miniyank-toline) :<c-u>call miniyank#force_motion('V')<cr>
 noremap <silent> <Plug>(miniyank-toblock) :<c-u>call miniyank#force_motion('b')<cr>
+
+let g:loaded_miniyank = 1
