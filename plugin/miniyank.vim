@@ -1,3 +1,9 @@
+if exists("g:loaded_miniyank")
+    if g:loaded_miniyank > 0
+        finish
+    endif
+endif
+
 if !exists('##TextYankPost')
     finish
 endif
