@@ -81,7 +81,7 @@ function! miniyank#putreg(data,cmd) abort
         call setreg('0', regsave[0], regsave[1])
         let s:last = a:data[0]
     catch /E353:/
-        " ignore Nothing in register 0 error ...
+        echohl WarningMsg | echo "E353: Nothing in register" | echohl None
     endtry
 endfunction
 
