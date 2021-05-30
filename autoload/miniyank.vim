@@ -74,11 +74,15 @@ endfunction
 
 " TODO: this should be a nvim builtin
 function! miniyank#putreg(data,cmd) abort
-    let regsave = [getreg('0'), getregtype('0')]
-    call setreg('0', a:data[0], a:data[1])
-    execute 'normal! '.(s:visual ? 'gv' : '').s:count.'"0'.a:cmd
-    call setreg('0', regsave[0], regsave[1])
-    let s:last = a:data[0]
+    try
+        let regsave = [getreg('0'), getregtype('0')]
+        call setreg('0', a:data[0], a:data[1])
+        execute 'normal! '.(s:visual ? 'gv' : '').s:count.'"0'.a:cmd
+        call setreg('0', regsave[0], regsave[1])
+        let s:last = a:data[0]
+    catch /E353:/
+        " ignore Nothing in register 0 error ...
+    endtry
 endfunction
 
 " work-around nvim:s lack of register types in clipboard
