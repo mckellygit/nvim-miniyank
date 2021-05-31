@@ -82,6 +82,10 @@ function! miniyank#putreg(data,cmd) abort
         let s:last = a:data[0]
     catch /E353:/
         echohl WarningMsg | echo "E353: Nothing in register" | echohl None
+        " nvim BUG: fix for nvim not always calling CursorHold ...
+        if exists("*My_Nvim_CursorHold_Fix")
+            call My_Nvim_CursorHold_Fix()
+        endif
     endtry
 endfunction
 
